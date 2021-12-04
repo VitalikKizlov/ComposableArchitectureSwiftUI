@@ -8,29 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var appState: AppState
+    @ObservedObject var state: AppState
     
     var body: some View {
         NavigationView {
-            List {
-                NavigationLink {
-                    CounterView(count: $appState.count)
-                } label: {
-                    Text("Counter")
-                }
-                NavigationLink {
-                    CounterView(count: $appState.count)
-                } label: {
-                    Text("Favorite primes")
-                }
+          List {
+            NavigationLink(destination: CounterView(state: self.state)) {
+              Text("Counter demo")
             }
-            .navigationTitle(Text("State Management"))
+            NavigationLink(destination: FavoritePrimesView(state: self.$state.favoritePrimesState)) {
+              Text("Favorite primes")
+            }
+          }
+          .navigationBarTitle("State management")
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(appState: AppState())
-    }
+      }
 }

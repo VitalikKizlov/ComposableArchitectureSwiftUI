@@ -14,7 +14,7 @@ struct ComposableArchitectureApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(appState: state)
+            ContentView(state: state)
         }
     }
 }

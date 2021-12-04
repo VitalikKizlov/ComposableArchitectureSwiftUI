@@ -14,35 +14,6 @@ final class AppState: ObservableObject {
   @Published var loggedInUser: User? = nil
   @Published var activityFeed: [Activity] = []
 
-  struct Activity {
-    let timestamp: Date
-    let type: ActivityType
-
-    enum ActivityType {
-      case addedFavoritePrime(Int)
-      case removedFavoritePrime(Int)
-    }
-  }
-
-  struct User {
-    let id: Int
-    let name: String
-    let bio: String
-  }
-}
-
-struct PrimeAlert: Identifiable {
-  let prime: Int
-
-  var id: Int { self.prime }
-}
-
-struct FavoritePrimesState {
-  var favoritePrimes: [Int]
-  var activityFeed: [AppState.Activity]
-}
-
-extension AppState {
   var favoritePrimesState: FavoritePrimesState {
     get {
       FavoritePrimesState(

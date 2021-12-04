@@ -20,6 +20,7 @@
 		FB98936A275B4FE200AE209B /* WolframAlphaResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB989369275B4FE200AE209B /* WolframAlphaResult.swift */; };
 		FB98936C275B505100AE209B /* IsPrimeModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98936B275B505100AE209B /* IsPrimeModalView.swift */; };
 		FB98936E275B50D000AE209B /* FavoritePrimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98936D275B50D000AE209B /* FavoritePrimesView.swift */; };
+		FB989370275B571600AE209B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98936F275B571600AE209B /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		FB989369275B4FE200AE209B /* WolframAlphaResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WolframAlphaResult.swift; sourceTree = "<group>"; };
 		FB98936B275B505100AE209B /* IsPrimeModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsPrimeModalView.swift; sourceTree = "<group>"; };
 		FB98936D275B50D000AE209B /* FavoritePrimesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePrimesView.swift; sourceTree = "<group>"; };
+		FB98936F275B571600AE209B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				FB989369275B4FE200AE209B /* WolframAlphaResult.swift */,
+				FB98936F275B571600AE209B /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				FB0B5574275A103E001D192D /* AppState.swift in Sources */,
 				FB0B5543275A0650001D192D /* ComposableArchitectureApp.swift in Sources */,
 				FB0B5571275A0E57001D192D /* Formatter.swift in Sources */,
+				FB989370275B571600AE209B /* User.swift in Sources */,
 				FB98936C275B505100AE209B /* IsPrimeModalView.swift in Sources */,
 				FB98936E275B50D000AE209B /* FavoritePrimesView.swift in Sources */,
 				FB0B556E275A0B10001D192D /* CounterView.swift in Sources */,

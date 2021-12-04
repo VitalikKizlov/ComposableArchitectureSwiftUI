@@ -10,11 +10,11 @@ import SwiftUI
 @main
 struct ComposableArchitectureApp: App {
     
-    let state = AppState()
+    let store = Store(initialValue: AppState())
     
     var body: some Scene {
         WindowGroup {
-            ContentView(state: state)
+            ContentView(store: store)
         }
     }
 }

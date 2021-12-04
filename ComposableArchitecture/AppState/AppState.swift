@@ -8,11 +8,19 @@
 import Foundation
 import Combine
 
-final class AppState: ObservableObject {
-  @Published var count = 0
-  @Published var favoritePrimes: [Int] = []
-  @Published var loggedInUser: User? = nil
-  @Published var activityFeed: [Activity] = []
+final class Store<Value>: ObservableObject {
+    @Published var value: Value
+    
+    init(initialValue: Value) {
+        self.value = initialValue
+    }
+}
+
+struct AppState {
+  var count = 0
+  var favoritePrimes: [Int] = []
+  var loggedInUser: User? = nil
+  var activityFeed: [Activity] = []
 
   var favoritePrimesState: FavoritePrimesState {
     get {

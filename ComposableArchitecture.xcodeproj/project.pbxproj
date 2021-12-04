@@ -21,6 +21,7 @@
 		FB98936C275B505100AE209B /* IsPrimeModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98936B275B505100AE209B /* IsPrimeModalView.swift */; };
 		FB98936E275B50D000AE209B /* FavoritePrimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98936D275B50D000AE209B /* FavoritePrimesView.swift */; };
 		FB989370275B571600AE209B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB98936F275B571600AE209B /* User.swift */; };
+		FB989373275B5D3300AE209B /* CounterAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB989372275B5D3300AE209B /* CounterAction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		FB98936B275B505100AE209B /* IsPrimeModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsPrimeModalView.swift; sourceTree = "<group>"; };
 		FB98936D275B50D000AE209B /* FavoritePrimesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePrimesView.swift; sourceTree = "<group>"; };
 		FB98936F275B571600AE209B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FB989372275B5D3300AE209B /* CounterAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterAction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 		FB0B5541275A0650001D192D /* ComposableArchitecture */ = {
 			isa = PBXGroup;
 			children = (
+				FB989371275B5D1700AE209B /* Actions */,
 				FB989368275B4FC100AE209B /* Models */,
 				FB0B5542275A0650001D192D /* ComposableArchitectureApp.swift */,
 				FB0B5572275A1031001D192D /* AppState */,
@@ -178,6 +181,14 @@
 				FB98936F275B571600AE209B /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		FB989371275B5D1700AE209B /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				FB989372275B5D3300AE209B /* CounterAction.swift */,
+			);
+			path = Actions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,6 +325,7 @@
 				FB0B5545275A0650001D192D /* ContentView.swift in Sources */,
 				FB0B5574275A103E001D192D /* AppState.swift in Sources */,
 				FB0B5543275A0650001D192D /* ComposableArchitectureApp.swift in Sources */,
+				FB989373275B5D3300AE209B /* CounterAction.swift in Sources */,
 				FB0B5571275A0E57001D192D /* Formatter.swift in Sources */,
 				FB989370275B571600AE209B /* User.swift in Sources */,
 				FB98936C275B505100AE209B /* IsPrimeModalView.swift in Sources */,

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct CounterView: View {
-    @ObservedObject var store: Store<AppState>
+    @ObservedObject var store: Store<AppState, CounterAction>
     @State var isPrimeModalShown: Bool = false
     @State var alertNthPrime: PrimeAlert?
     @State var isNthPrimeButtonDisabled = false

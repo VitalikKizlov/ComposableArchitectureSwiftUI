@@ -7,12 +7,28 @@
 
 import Foundation
 import Combine
+import CloudKit
 
-final class Store<Value>: ObservableObject {
+func counterReducer(_ state: inout AppState, action: CounterAction) {
+    switch action {
+    case .decrement:
+        state.count -= 1
+    case .increment:
+        state.count += 1
+    }
+}
+
+final class Store<Value, Action>: ObservableObject {
     @Published var value: Value
+    private let reducer: (inout Value, Action) -> Void
     
-    init(initialValue: Value) {
+    init(initialValue: Value, reducer: @escaping (inout Value, Action) -> Void) {
         self.value = initialValue
+        self.reducer = reducer
+    }
+    
+    func send(_ action: Action) {
+        reducer(&value, action)
     }
 }
 

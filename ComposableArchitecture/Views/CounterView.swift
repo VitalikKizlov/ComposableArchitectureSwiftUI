@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct CounterView: View {
-    @ObservedObject var store: Store<AppState, CounterAction>
+    @ObservedObject var store: Store<AppState, AppAction>
     @State var isPrimeModalShown: Bool = false
     @State var alertNthPrime: PrimeAlert?
     @State var isNthPrimeButtonDisabled = false
@@ -17,11 +17,11 @@ struct CounterView: View {
     var body: some View {
         VStack {
             HStack {
-                Button(action: { self.store.value.count -= 1 }) {
+                Button(action: { self.store.send(.counter(.decrement)) }) {
                     Text("-")
                 }
                 Text("\(self.store.value.count)")
-                Button(action: { self.store.value.count += 1 }) {
+                Button(action: { self.store.send(.counter(.increment)) }) {
                     Text("+")
                 }
             }

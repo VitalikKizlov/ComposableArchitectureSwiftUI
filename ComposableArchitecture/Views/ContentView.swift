@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var store: Store<AppState, CounterAction>
+    @ObservedObject var store: Store<AppState, AppAction>
     
     var body: some View {
         NavigationView {
@@ -16,7 +16,7 @@ struct ContentView: View {
             NavigationLink(destination: CounterView(store: self.store)) {
               Text("Counter demo")
             }
-              NavigationLink(destination: FavoritePrimesView(state: self.$store.value.favoritePrimesState)) {
+              NavigationLink(destination: FavoritePrimesView(store: store)) {
               Text("Favorite primes")
             }
           }

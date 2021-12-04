@@ -9,12 +9,24 @@ import Foundation
 import Combine
 import CloudKit
 
-func counterReducer(_ state: inout AppState, action: CounterAction) {
+func counterReducer(_ state: inout AppState, action: AppAction) {
     switch action {
-    case .decrement:
+    case .counter(.decrement):
         state.count -= 1
-    case .increment:
+    case .counter(.increment):
         state.count += 1
+    case .primeModal(.removeFavoritePrime):
+        state.favoritePrimes.removeAll(where: { $0 == state.count })
+        state.activityFeed.append(.init(timestamp: Date(), type: .removedFavoritePrime(state.count)))
+    case .primeModal(.saveFavoritePrime):
+        state.favoritePrimes.append(state.count)
+        state.activityFeed.append(.init(timestamp: Date(), type: .addedFavoritePrime(state.count)))
+    case .favoritePrime(.removeFavoritePrime(let indexSet)):
+        for index in indexSet {
+          let prime = state.favoritePrimes[index]
+          state.favoritePrimes.remove(at: index)
+          state.activityFeed.append(.init(timestamp: Date(), type: .removedFavoritePrime(prime)))
+        }
     }
 }
 

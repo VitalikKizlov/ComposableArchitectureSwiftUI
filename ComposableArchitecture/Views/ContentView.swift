@@ -16,7 +16,7 @@ struct ContentView: View {
             NavigationLink(destination: CounterView(store: self.store)) {
               Text("Counter demo")
             }
-              NavigationLink(destination: FavoritePrimesView(store: store)) {
+              NavigationLink(destination: FavoritePrimesView(store: self.store)) {
               Text("Favorite primes")
             }
           }

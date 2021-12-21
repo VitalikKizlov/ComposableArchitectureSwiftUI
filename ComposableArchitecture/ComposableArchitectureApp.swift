@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct ComposableArchitectureApp: App {
     
-    let store = Store(initialValue: AppState(), reducer: counterReducer)
+    let store = Store(initialValue: AppState(), reducer: appReducer)
     
     var body: some Scene {
         WindowGroup {

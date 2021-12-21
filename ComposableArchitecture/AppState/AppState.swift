@@ -7,28 +7,65 @@
 
 import Foundation
 import Combine
-import CloudKit
 
-func counterReducer(_ state: inout AppState, action: AppAction) {
+func counterReducer(_ state: inout Int, action: AppAction) {
     switch action {
     case .counter(.decrement):
-        state.count -= 1
+        state -= 1
     case .counter(.increment):
-        state.count += 1
+        state += 1
+    default:
+        break
+    }
+}
+
+func primeModalReducer(_ state: inout AppState, action: AppAction) {
+    switch action {
     case .primeModal(.removeFavoritePrime):
         state.favoritePrimes.removeAll(where: { $0 == state.count })
         state.activityFeed.append(.init(timestamp: Date(), type: .removedFavoritePrime(state.count)))
     case .primeModal(.saveFavoritePrime):
         state.favoritePrimes.append(state.count)
         state.activityFeed.append(.init(timestamp: Date(), type: .addedFavoritePrime(state.count)))
+    default:
+        break
+    }
+}
+
+func favoritePrimesReducer(_ state: inout FavoritePrimesState, action: AppAction) {
+    switch action {
     case .favoritePrime(.removeFavoritePrime(let indexSet)):
         for index in indexSet {
-          let prime = state.favoritePrimes[index]
-          state.favoritePrimes.remove(at: index)
-          state.activityFeed.append(.init(timestamp: Date(), type: .removedFavoritePrime(prime)))
+            let prime = state.favoritePrimes[index]
+            state.favoritePrimes.remove(at: index)
+            state.activityFeed.append(.init(timestamp: Date(), type: .removedFavoritePrime(prime)))
+        }
+    default:
+        break
+    }
+}
+
+func combine<Value, Action>(_ reducers: (inout Value, Action) -> Void...) -> (inout Value, Action) -> Void {
+    return { value, action in
+        for reducer in reducers {
+            reducer(&value, action)
         }
     }
 }
+
+func pullback<LocalValue, GlobalValue, Action>(
+    _ reducer: @escaping (inout LocalValue, Action) -> Void,
+    value: WritableKeyPath<GlobalValue, LocalValue> ) -> (inout GlobalValue, Action) -> Void {
+        return { globalValue, action in
+            reducer(&globalValue[keyPath: value], action)
+        }
+    }
+
+let appReducer = combine(
+    pullback(counterReducer, value: \.count),
+    primeModalReducer,
+    pullback(favoritePrimesReducer, value: \.favoritePrimesState)
+)
 
 final class Store<Value, Action>: ObservableObject {
     @Published var value: Value
